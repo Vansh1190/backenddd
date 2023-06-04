@@ -18,11 +18,13 @@ const fetchUser = (req,res,next)=>{
             }
             else{
                   // we need to replace ' " ' that because it is giving an error.
-                User.findById(result.replace('"',"")).then((data)=>{
-                    console.log(result
+                let c =  result.replace('"',"")
+                let d =  c.replace('"',"")
+                User.findById(d).then((data)=>{
                     req.user = data;
                     next();
                 }).catch((err)=>{
+                    console.log(d)
                     console.log("Error",err.message)
                 })
                
