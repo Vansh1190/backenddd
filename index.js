@@ -1,9 +1,8 @@
 const connectToMongo = require('./database')
-const mongoose = require("mongoose")
 const express = require('express')
 const cors=require("cors");
 
-connectToMongo()
+connectToMongo()    
 
 const app = express()
 const port = 3000
@@ -23,9 +22,11 @@ app.get('/',(req,res)=>{
 
 app.use(express.json())  //This express.json act as an interface 
 
+app.use("/api/logininfo",require("./middleware/fetchUser"))
 app.use("/api/auth",require('./routes/auth'))
 app.use("/api/notes",require('./routes/notes'))
 app.use("/api/vansh",require('./routes/Vansh'))
+app.use("/chat",require('./routes/GlobaChat'))
 
 
 

@@ -2,6 +2,10 @@ const mongoose = require("mongoose")
 const {Schema} = mongoose
 
 const NotesSchema = new mongoose.Schema({
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'users'
+    },
     title:{
         type:String,
         require:true
@@ -18,7 +22,6 @@ const NotesSchema = new mongoose.Schema({
         type:Date,
         default:Date.now,
         require:true
-
     }
 })
 
